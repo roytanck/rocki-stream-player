@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Rocki stream player</title>
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<link href='http://fonts.googleapis.com/css?family=Bitter:400,700' rel='stylesheet' type='text/css'>
+		<style type="text/css">
+			body {
+				background-color: #000;
+				font-family: 'Bitter', serif;
+				font-size: 15px;
+				color: #fff;
+				padding: 0;
+				margin: 0;
+				line-height: 1.5em;
+			}
+			#controls {
+				background-color: #26C493;
+				padding: 20px 50px;
+			}
+			input {
+				padding: 6px;
+				font-family: 'Bitter', serif;
+				font-size: 15px;
+				border: none;
+			}
+			#stop { padding: 0 6px; }
+			a {
+				color: #000 !important;
+				text-decoration: none;
+			}
+			.log {
+				background-color: #0a3628;
+				padding: 20px 50px;
+				margin: 0;
+				color: #93E2C9;
+			}
+			h1 {
+				font-size: 3em;
+			}
+			#iframe {
+				position: absolute;
+				left: -999px;
+				top: 0px;
+			}
+			#presets {
+				list-style-type: none;
+				display: block;
+				padding: 0;
+				margin: 20px 0 0 0;
+				min-height: 40px;
+			}
+			#presets li a {
+				display: block;
+				float: left;
+				margin: 0 3px;
+				padding: 3px 12px;
+				background-color: #198261;
+				-moz-border-radius: 12px;
+				-webkit-border-radius: 12px;
+				border-radius: 12px;
+				color: #fff !important;
+			}
+			#footer {
+				position: absolute;
+				bottom: 0px;
+				left: 0px;
+				padding: 10px 50px;
+				font-size: 0.75em;
+				color: #198261;
+			}
+			#footer a {
+				color: #198261 !important;				
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="controls">
+
+			<h1>Rocki stream player</h1>
+
+			<form action="" id="form">
+				<input type="text" id="ip" name="ip" size="15" value="192.168.0.105" />
+				<input type="text" id="stream" name="stream" size="50" value="http://icecast.omroep.nl/3fm-alternative-mp3" />
+				<input type="submit" value="Play" />
+				<a href="#" id="stop">stop</a>
+			</form>
+
+			<ul id="presets">
+				<li><a href="http://icecast.omroep.nl/3fm-bb-mp3" class="preset">3FM</a></li>
+				<li><a href="http://icecast.omroep.nl/3fm-alternative-mp3" class="preset">3FM Alternative</a></li>
+				<li><a href="http://mp3.streampower.be/stubru-high.mp3" class="preset">StuBru</a></li>
+				<li><a href="http://icecast.omroep.nl/radio2-top2000-mp3" class="preset">Radio2 Top 2000</a></li>
+				<li><a href="http://icecast.omroep.nl/3fm-serioustalent-mp3" class="preset">KX Radio</a></li>
+			</ul>
+		</div>
+
+		<p class="log"></p>
+
+		<div id="footer">&copy; <a href="http://www.roytanck.com">Roy Tanck</a>, <a href="http://www.geerdesontwerpen.nl">Martijn Geerdes</a>. <a href="http://www.myrocki.com/">Rocki rocks</a>. Contribute on <a href="https://github.com/roytanck/rocki-stream-player">GitHub</a></div>
+
+		<iframe id="iframe" src="" width="200" height="200" frameBorder="0"></iframe>
+
+		<script type="text/javascript">
+
+			$( document ).ready( function(){
+				var settings = getCookie('rsp_cookie');
+				if( settings != null ){
+					var s = JSON.parse( settings );
+					$('input#ip').val( s.ip );
+					$('input#stream').val( s.stream );
+				}
+			});
+
+			$.ajaxSetup({
+				timeout: 1000*60*60 
+			});
+
+			$( "#form" ).submit(function( event ) {
+				// assemble the API call to send to Rocki
+				ip = $('input#ip').val(); //document.forms["form"]["ip"].value;
+				stream = $('input#stream').val(); //document.forms["form"]["stream"].value;
+				apiCall = 'http://' + ip + '/cgi-bin/rocki.cgi?Play=' + stream;
+				// send through AJAX
+				sendRequest( apiCall );
+				// write to log
+				rocki_log( 'API call sent: ' + ip + ' -&gt; ' + stream );
+				// seave settings to a cookie
+				setCookie( 'rsp_cookie', JSON.stringify( { 'ip' : ip, 'stream' : stream } ) );
+				// done
+				event.preventDefault();
+			});
+
+			$('#stop').click(function( event ) {
+				// assemble the API call to send to Rocki
+				ip = $('input#ip').val(); //document.forms["form"]["ip"].value;
+				apiCall = 'http://' + ip + '/cgi-bin/rocki.cgi?Stop=true';
+				// send through AJAX
+				sendRequest( apiCall );
+				// write line to log
+				rocki_log( 'API call sent: ' + ip + ' -&gt; stop' );
+				// done
+				event.preventDefault();
+			});
+
+			$('.preset').click(function( event ) {
+				event.preventDefault();
+				$('#stream').val( $(this).attr('href') );
+			});
+
+			function rocki_log( str ){
+				d = new Date();
+				t = d.toLocaleString();
+				$( ".log" ).append( '[' + t + '] ' + str + '<br />' );
+			}
+
+			function sendRequest( url ){
+				/*
+				var jqxhr = $.get( url, function() {
+					rocki_log( "Stream started successfully" );
+				}).fail(function( data, textStatus, errorThrown) {
+					rocki_log( textStatus + ': ' + errorThrown );
+				}).always(function() {
+					rocki_log( "API call completed" );
+					delete jqhxr;
+				});
+				*/
+				
+				/*
+				var xmlHttp = null;
+				xmlHttp = new XMLHttpRequest();
+				xmlHttp.open( "GET", url, true );
+				xmlHttp.send( null );
+				xmlHttp = null;
+				//return xmlHttp.responseText;
+				*/
+
+				// fallback
+				$("#iframe").attr( 'src', url );
+			}
+
+			function setCookie(key, value) {
+				var expires = new Date();
+				expires.setTime( expires.getTime() + ( 24 * 60 * 60 * 1000 ) );
+				document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+			}
+
+			function getCookie(key) {
+				var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+				return keyValue ? keyValue[2] : null;
+			}
+
+		</script>
+
+	</body>
+
+</html>
