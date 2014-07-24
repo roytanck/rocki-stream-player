@@ -20,11 +20,28 @@
 				background-color: #26C493;
 				padding: 20px 50px;
 			}
+			#controls form {
+				display: block;
+				min-height: 60px;
+			}
 			input {
 				padding: 6px;
 				font-family: 'Bitter', serif;
 				font-size: 15px;
 				border: none;
+			}
+			input#submit {
+				background-color: #eee;
+				padding: 6px 12px;
+			}
+			#controls span {
+				position: relative;
+			}
+			#controls label {
+				position: absolute;
+				left: 7px;
+				top: 30px;
+				font-size: 0.85em;
 			}
 			#stop { padding: 0 6px; }
 			a {
@@ -68,11 +85,11 @@
 				bottom: 0px;
 				left: 0px;
 				padding: 10px 50px;
-				font-size: 0.75em;
+				font-size: 0.85em;
 				color: #198261;
 			}
 			#footer a {
-				color: #198261 !important;				
+				color: #26C493 !important;				
 			}
 		</style>
 	</head>
@@ -83,9 +100,15 @@
 			<h1>Rocki stream player</h1>
 
 			<form action="" id="form">
-				<input type="text" id="ip" name="ip" size="15" value="192.168.0.105" />
-				<input type="text" id="stream" name="stream" size="50" value="http://icecast.omroep.nl/3fm-alternative-mp3" />
-				<input type="submit" value="Play" />
+				<span class="formfield">
+					<label for="ip">Your Rocki's IP</label>
+					<input type="text" id="ip" name="ip" size="15" value="192.168.0.105" />
+				</span>
+				<span>
+					<label for="stream">Stream URL</label>
+					<input type="text" id="stream" name="stream" size="50" value="http://icecast.omroep.nl/3fm-alternative-mp3" />
+				</span>
+				<input id="submit" type="submit" value="Play" />
 				<a href="#" id="stop">stop</a>
 			</form>
 
@@ -100,7 +123,7 @@
 
 		<p class="log"></p>
 
-		<div id="footer">&copy; <a href="http://www.roytanck.com">Roy Tanck</a>, <a href="http://www.geerdesontwerpen.nl">Martijn Geerdes</a>. <a href="http://www.myrocki.com/">Rocki rocks</a>. Contribute on <a href="https://github.com/roytanck/rocki-stream-player">GitHub</a></div>
+		<div id="footer">&copy; <a href="http://www.roytanck.com">Roy Tanck</a> - <a href="http://www.myrocki.com/">Rocki rocks</a> - Requires firmware version 1.2+ on your Rocki - Having trouble? Please <a href="https://github.com/roytanck/rocki-stream-player/issues">post issues on GitHub</a>.</div>
 
 		<iframe id="iframe" src="" width="200" height="200" frameBorder="0"></iframe>
 
