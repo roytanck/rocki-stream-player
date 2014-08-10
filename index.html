@@ -45,8 +45,8 @@
 
 		<div class="block">
 			<h2 class="blocktitle">Help</h2>
-			<div class="blockcontent">
-				<p>This web page allows you to send a compatible audio stream to your Rocki player.</p>
+			<div class="blockcontent helpblock">
+				<p>This web page allows you to send a compatible audio stream to your <a href="http://www.myrocki.com/">Rocki</a> player.</p>
 				<ul>
 					<li>Find the IP address of your Rocki. There are many ways to do this, I prefer the <a href="https://play.google.com/store/apps/details?id=com.overlook.android.fing">Fing</a> app on Android.</li>
 					<li>Find the stream URL you want to play. Some radio station websites display stream URLs, on others you may need to view the source of the page. Alternatively, use one of the preset buttons.</li>
@@ -81,7 +81,7 @@
 
 				// block folding
 				$('.blocktitle').click( function(){
-					$(this).parent().find('.blockcontent').slideToggle( 400, function(){
+					$(this).parent().find('.blockcontent').slideToggle( 200, function(){
 						if( $(this).is(":visible") ){
 							$(this).parent().find('.blocktitle').addClass('openblock');
 						} else {

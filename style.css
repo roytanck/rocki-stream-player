@@ -21,8 +21,10 @@ a, a:hover, a:visited {
 	text-decoration: none;
 }
 
+.helpblock a, .helpblock a:hover, .helpblock a:visited { color: #a7e7d3; text-decoration: underline; }
+
 #title {
-	background-color: #0a3628;
+	background-color: #0e4734;
 	padding: 12px 20px 20px 20px;
 }
 
@@ -38,6 +40,7 @@ a, a:hover, a:visited {
 	border: none;
 	display: block;
 	width: 100%;
+	max-width: 600px;
 	margin-bottom: 10px;
 }
 
@@ -46,9 +49,11 @@ a, a:hover, a:visited {
 	background-color: #198261;
 	padding: 6px 12px;
 	width: 100%;
+	max-width: 600px;
 	margin-bottom: 10px;
 	margin-top: 20px;
 	text-align: center;
+	font-weight: bold;
 	-moz-border-radius: 12px;
 	-webkit-border-radius: 12px;
 	border-radius: 12px;
@@ -75,36 +80,50 @@ a, a:hover, a:visited {
 .block .blockcontent {
 	display: none;
 	padding: 10px 20px;
-	background-color: #0a3628;
-}
-
-.block.logblock .blockcontent {
-	background-color: #0a3628;
+	background-color: #146c50;
 }
 
 .block .blocktitle {
 	border-top: 1px solid #000;
-	background-color: #0a3628;
+	background-color: #0e4734;
 	padding: 10px 20px;
-	background: -webkit-linear-gradient( #0a3628, #000 ); /* For Safari 5.1 to 6.0 */
-	background: -o-linear-gradient( #0a3628, #000 ); /* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient( #0a3628, #000 ); /* For Firefox 3.6 to 15 */
-	background: linear-gradient( #0a3628, #000 ); /* Standard syntax */
 	cursor: pointer;
 }
 
 .blocktitle:before {
-   content: "» ";
+	content: "» ";
 }
 
 .blocktitle.openblock:before {
 	content: "« ";
 }
 
+#presets {
+	list-style-type: none;
+	display: block;
+	padding: 0;
+	margin: 10px 0 0 0;
+	min-height: 40px;
+}
+
+#presets li a {
+	display: block;
+	float: left;
+	margin: 0 10px 10px 0;
+	padding: 0 20px;
+	line-height: 2em;
+	background-color: #7bb5ff; //#bbeddd;
+	color: #000;
+	font-weight: bold;
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+	border-radius: 12px;
+}
+
 .log {
 	padding: 10px 0;
 	margin: 0;
-	color: #93E2C9;
+	color: #fff;
 }
 
 h1 {
@@ -124,28 +143,6 @@ h2 {
 	left: -999px;
 	top: 0px;
 }
-
-
-#presets {
-	list-style-type: none;
-	display: block;
-	padding: 0;
-	margin: 10px 0 0 0;
-	min-height: 40px;
-}
-
-#presets li a {
-	display: block;
-	float: left;
-	margin: 0 5px 10px 0;
-	padding: 0 20px;
-	line-height: 2em;
-	background-color: #000;
-	-moz-border-radius: 12px;
-	-webkit-border-radius: 12px;
-	border-radius: 12px;
-}
-
 
 #footer {
 	padding: 10px 20px;
