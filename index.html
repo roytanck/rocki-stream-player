@@ -3,125 +3,65 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>Rocki stream player</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Rocki Radio</title>
 		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 		<link href='http://fonts.googleapis.com/css?family=Bitter:400,700' rel='stylesheet' type='text/css'>
-		<style type="text/css">
-			body {
-				background-color: #000;
-				font-family: 'Bitter', serif;
-				font-size: 15px;
-				color: #fff;
-				padding: 0;
-				margin: 0;
-				line-height: 1.5em;
-			}
-			#controls {
-				background-color: #26C493;
-				padding: 20px 50px;
-			}
-			#controls form {
-				display: block;
-				min-height: 60px;
-			}
-			input {
-				padding: 6px;
-				font-family: 'Bitter', serif;
-				font-size: 15px;
-				border: none;
-			}
-			input#submit {
-				background-color: #eee;
-				padding: 6px 12px;
-			}
-			#controls span {
-				position: relative;
-			}
-			#controls label {
-				position: absolute;
-				left: 7px;
-				top: 30px;
-				font-size: 0.85em;
-			}
-			#stop { padding: 0 6px; }
-			a {
-				color: #000 !important;
-				text-decoration: none;
-			}
-			.log {
-				background-color: #0a3628;
-				padding: 20px 50px;
-				margin: 0;
-				color: #93E2C9;
-			}
-			h1 {
-				font-size: 3em;
-			}
-			#iframe {
-				position: absolute;
-				left: -999px;
-				top: 0px;
-			}
-			#presets {
-				list-style-type: none;
-				display: block;
-				padding: 0;
-				margin: 20px 0 0 0;
-				min-height: 40px;
-			}
-			#presets li a {
-				display: block;
-				float: left;
-				margin: 0 3px;
-				padding: 3px 12px;
-				background-color: #198261;
-				-moz-border-radius: 12px;
-				-webkit-border-radius: 12px;
-				border-radius: 12px;
-				color: #fff !important;
-			}
-			#footer {
-				position: absolute;
-				bottom: 0px;
-				left: 0px;
-				padding: 10px 50px;
-				font-size: 0.85em;
-				color: #198261;
-			}
-			#footer a {
-				color: #26C493 !important;				
-			}
-		</style>
+		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 
 	<body>
-		<div id="controls">
 
-			<h1>Rocki stream player</h1>
-
-			<form action="" id="form">
-				<span class="formfield">
-					<label for="ip">Your Rocki's IP</label>
-					<input type="text" id="ip" name="ip" size="15" value="192.168.0.105" />
-				</span>
-				<span>
-					<label for="stream">Stream URL</label>
-					<input type="text" id="stream" name="stream" size="50" value="http://icecast.omroep.nl/3fm-alternative-mp3" />
-				</span>
-				<input id="submit" type="submit" value="Play" />
-				<a href="#" id="stop">stop</a>
-			</form>
-
-			<ul id="presets">
-				<li><a href="http://icecast.omroep.nl/3fm-bb-mp3" class="preset">3FM</a></li>
-				<li><a href="http://icecast.omroep.nl/3fm-alternative-mp3" class="preset">3FM Alternative</a></li>
-				<li><a href="http://mp3.streampower.be/stubru-high.mp3" class="preset">StuBru</a></li>
-				<li><a href="http://icecast.omroep.nl/radio2-top2000-mp3" class="preset">Radio2 Top 2000</a></li>
-				<li><a href="http://icecast.omroep.nl/3fm-serioustalent-mp3" class="preset">KX Radio</a></li>
-			</ul>
+		<div id="title">
+			<h1>Rocki Radio</h1>
 		</div>
 
-		<p class="log"></p>
+		<div id="controls">
+
+			<form action="" id="form">
+				<label for="ip">Your Rocki's IP</label>
+				<input type="text" id="ip" name="ip" size="15" value="192.168.0.105" />
+				<label for="stream">Stream URL</label>
+				<input type="text" id="stream" name="stream" size="50" value="http://icecast.omroep.nl/3fm-alternative-mp3" />
+				<a href="#" class="button" id="play">Play</a>
+				<a href="#" class="button" id="stop">Stop</a>
+			</form>
+
+		</div>
+
+		<div class="block">
+			<h2 class="blocktitle">Presets</h2>
+			<div class="blockcontent">
+				<ul id="presets">
+					<li><a href="http://icecast.omroep.nl/3fm-bb-mp3" class="preset">3FM (NL)</a></li>
+					<li><a href="http://icecast.omroep.nl/3fm-alternative-mp3" class="preset">3FM Alternative (NL)</a></li>
+					<li><a href="http://mp3.streampower.be/stubru-high.mp3" class="preset">StuBru (BE)</a></li>
+					<li><a href="http://icecast.omroep.nl/radio2-top2000-mp3" class="preset">Radio2 Top 2000 (NL)</a></li>
+					<li><a href="http://icecast.omroep.nl/3fm-serioustalent-mp3" class="preset">KX Radio (NL)</a></li>
+				</ul>
+				<div class="clearer"></div>
+			</div>
+		</div>
+
+		<div class="block">
+			<h2 class="blocktitle">Help</h2>
+			<div class="blockcontent">
+				<p>This web page allows you to send a compatible audio stream to your rocki player.</p>
+				<ul>
+					<li>Find the IP address of your Rocki. There are many ways to do this, I prefer the <a href="https://play.google.com/store/apps/details?id=com.overlook.android.fing">Fing</a> app on Android.</li>
+					<li>Find the stream URL you want to play. Some radio station websites display stream URLs, on others you may need to view the source of the page. Alternatively, use one of the preset buttons.</li>
+					<li>Enter both values in the form on this page, and press "Play".</li>
+				</ul>
+				<p>Please make sure your Rocki has the latest formware installed. Feel free to post any issues you encounter on <a href="https://github.com/roytanck/rocki-stream-player/issues">GitHub</a>.</p>
+			</div>
+		</div>
+
+		<div class="block logblock">
+			<h2 class="blocktitle">Log</h2>
+			<div class="blockcontent">
+				<p class="log"></p>
+			</div>
+		</div>
 
 		<div id="footer">&copy; <a href="http://www.roytanck.com">Roy Tanck</a> - <a href="http://www.myrocki.com/">Rocki rocks</a> - Requires firmware version 1.2+ on your Rocki - Having trouble? Please <a href="https://github.com/roytanck/rocki-stream-player/issues">post issues on GitHub</a>.</div>
 
@@ -130,16 +70,25 @@
 		<script type="text/javascript">
 
 			$( document ).ready( function(){
+				
+				// restore previous vlaues from cookie
 				var settings = getCookie('rsp_cookie');
 				if( settings != null ){
 					var s = JSON.parse( settings );
 					$('input#ip').val( s.ip );
 					$('input#stream').val( s.stream );
 				}
-			});
 
-			$.ajaxSetup({
-				timeout: 1000*60*60 
+				// block folding
+				$('.blocktitle').click( function(){
+					$(this).parent().find('.blockcontent').slideToggle( 400, function(){
+						if( $(this).is(":visible") ){
+							$(this).parent().find('.blocktitle').addClass('openblock');
+						} else {
+							$(this).parent().find('.blocktitle').removeClass('openblock');
+						}
+					});
+				});
 			});
 
 			$( "#form" ).submit(function( event ) {
@@ -156,6 +105,14 @@
 				// done
 				event.preventDefault();
 			});
+
+			$('#play').click(function( event ) {
+				// submit the form
+				$('#form').submit();
+				// done
+				event.preventDefault();
+			});
+
 
 			$('#stop').click(function( event ) {
 				// assemble the API call to send to Rocki

@@ -1,0 +1,158 @@
+*, *:before, *:after {
+	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+
+.clearer { display: block; clear: both; height: 0px; overflow: hidden; }
+
+html { margin: 0; padding: 0; }
+
+body {
+	background-color: #000;
+	font-family: 'Bitter', serif;
+	font-size: 18px;
+	color: #fff;
+	padding: 0;
+	margin: 0;
+	line-height: 1.5em;
+}
+
+a, a:hover, a:visited {
+	color: #fff;
+	text-decoration: none;
+}
+
+#title {
+	background-color: #0a3628;
+	padding: 12px 20px 20px 20px;
+}
+
+#controls {
+	background-color: #26C493;
+	padding: 10px 20px;
+}
+
+#controls input {
+	padding: 6px;
+	font-family: 'Bitter', serif;
+	font-size: 18px;
+	border: none;
+	display: block;
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+#controls .button {
+	display: block;
+	background-color: #198261;
+	padding: 6px 12px;
+	width: 100%;
+	margin-bottom: 10px;
+	margin-top: 20px;
+	text-align: center;
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+	border-radius: 12px;
+}
+
+#controls #play {
+	background-color: #fd0;
+	color: #000;
+}
+
+#controls label {
+	display: block;
+	clear: both;
+}
+
+/* folding blocks */
+
+.block {
+	padding: 0;
+	margin: 0;
+	clear: both;
+}
+
+.block .blockcontent {
+	display: none;
+	padding: 10px 20px;
+	background-color: #0a3628;
+}
+
+.block.logblock .blockcontent {
+	background-color: #0a3628;
+}
+
+.block .blocktitle {
+	border-top: 1px solid #000;
+	background-color: #0a3628;
+	padding: 10px 20px;
+	background: -webkit-linear-gradient( #0a3628, #000 ); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient( #0a3628, #000 ); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient( #0a3628, #000 ); /* For Firefox 3.6 to 15 */
+	background: linear-gradient( #0a3628, #000 ); /* Standard syntax */
+	cursor: pointer;
+}
+
+.blocktitle:before {
+   content: "» ";
+}
+
+.blocktitle.openblock:before {
+	content: "« ";
+}
+
+.log {
+	padding: 10px 0;
+	margin: 0;
+	color: #93E2C9;
+}
+
+h1 {
+	font-size: 3em;
+	line-height: 1em;
+	margin: 0;
+}
+
+h2 {
+	font-size: 1.5em;
+	line-height: 1.25em;
+	margin: 0;
+}
+
+#iframe {
+	position: absolute;
+	left: -999px;
+	top: 0px;
+}
+
+
+#presets {
+	list-style-type: none;
+	display: block;
+	padding: 0;
+	margin: 10px 0 0 0;
+	min-height: 40px;
+}
+
+#presets li a {
+	display: block;
+	float: left;
+	margin: 0 5px 10px 0;
+	padding: 0 20px;
+	line-height: 2em;
+	background-color: #000;
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+	border-radius: 12px;
+}
+
+
+#footer {
+	padding: 10px 20px;
+	font-size: 0.85em;
+	color: #198261;
+}
+
+#footer a {
+	color: #26C493 !important;				
+}
