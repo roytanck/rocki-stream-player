@@ -8,7 +8,7 @@ html { margin: 0; padding: 0; }
 
 body {
 	background-color: #000;
-	font-family: 'Bitter', serif;
+	font-family: 'Montserrat', sans-serif;
 	font-size: 18px;
 	color: #fff;
 	padding: 0;
@@ -25,7 +25,7 @@ a, a:hover, a:visited {
 
 #title {
 	background-color: #0e4734;
-	padding: 12px 20px 20px 20px;
+	padding: 15px 20px 20px 20px;
 }
 
 #controls {
@@ -35,7 +35,7 @@ a, a:hover, a:visited {
 
 #controls input {
 	padding: 6px;
-	font-family: 'Bitter', serif;
+	font-family: 'Montserrat', sans-serif;
 	font-size: 18px;
 	border: none;
 	display: block;
@@ -54,6 +54,7 @@ a, a:hover, a:visited {
 	margin-top: 20px;
 	text-align: center;
 	font-weight: bold;
+	text-transform: uppercase;
 	-moz-border-radius: 12px;
 	-webkit-border-radius: 12px;
 	border-radius: 12px;
@@ -127,14 +128,15 @@ a, a:hover, a:visited {
 }
 
 h1 {
-	font-size: 3em;
+	font-size: 2.5em;
 	line-height: 1em;
 	margin: 0;
+	text-transform: uppercase;
 }
 
 h2 {
-	font-size: 1.5em;
-	line-height: 1.25em;
+	font-size: 1.25em;
+	line-height: 1.5em;
 	margin: 0;
 }
 
