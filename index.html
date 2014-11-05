@@ -65,7 +65,7 @@
 			</div>
 		</div>
 
-		<div id="footer">&copy; <a href="http://www.roytanck.com">Roy Tanck</a> - <a href="http://www.myrocki.com/">Rocki rocks</a> - Requires firmware version 1.2+ on your Rocki - Having trouble? Please <a href="https://github.com/roytanck/rocki-stream-player/issues">post issues on GitHub</a>.</div>
+		<div id="footer">&copy; <a href="http://www.roytanck.com">Roy Tanck</a> - <a href="http://www.myrocki.com/">Rocki rocks</a> - Requires firmware version 1.4+ on your Rocki - Having trouble? Please <a href="https://github.com/roytanck/rocki-stream-player/issues">post issues on GitHub</a>.</div>
 
 		<iframe id="iframe" src="" width="200" height="200" frameBorder="0"></iframe>
 
@@ -97,7 +97,8 @@
 				// assemble the API call to send to Rocki
 				ip = $('input#ip').val(); //document.forms["form"]["ip"].value;
 				stream = $('input#stream').val(); //document.forms["form"]["stream"].value;
-				apiCall = 'http://' + ip + '/cgi-bin/rocki.cgi?Play=' + stream;
+				//apiCall = 'http://' + ip + '/cgi-bin/rocki.cgi?Play=' + stream;
+				apiCall = 'http://' + ip + '/cgi-bin/rocki.cgi?Play=upnp&Host=127.0.0.1&Port=49153&URL=' + stream + '&Duration=99:59:59.999';
 				// send through AJAX
 				sendRequest( apiCall );
 				// write to log
@@ -140,26 +141,6 @@
 			}
 
 			function sendRequest( url ){
-				/*
-				var jqxhr = $.get( url, function() {
-					rocki_log( "Stream started successfully" );
-				}).fail(function( data, textStatus, errorThrown) {
-					rocki_log( textStatus + ': ' + errorThrown );
-				}).always(function() {
-					rocki_log( "API call completed" );
-					delete jqhxr;
-				});
-				*/
-				
-				/*
-				var xmlHttp = null;
-				xmlHttp = new XMLHttpRequest();
-				xmlHttp.open( "GET", url, true );
-				xmlHttp.send( null );
-				xmlHttp = null;
-				//return xmlHttp.responseText;
-				*/
-
 				// fallback
 				$("#iframe").attr( 'src', url );
 			}
