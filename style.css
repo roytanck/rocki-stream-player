@@ -21,15 +21,15 @@ a, a:hover, a:visited {
 	text-decoration: none;
 }
 
-.helpblock a, .helpblock a:hover, .helpblock a:visited { color: #a7e7d3; text-decoration: underline; }
+.helpblock a, .helpblock a:hover, .helpblock a:visited { color: #a9c2ef; text-decoration: underline; }
 
 #title {
-	background-color: #0e4734;
+	background-color: #242d3e;
 	padding: 15px 20px 20px 20px;
 }
 
 #controls {
-	background-color: #26C493;
+	background-color: #3f4f6d;
 	padding: 10px 20px;
 }
 
@@ -46,7 +46,7 @@ a, a:hover, a:visited {
 
 #controls .button {
 	display: block;
-	background-color: #198261;
+	background-color: #6b86b7;
 	padding: 6px 12px;
 	width: 100%;
 	max-width: 600px;
@@ -60,9 +60,17 @@ a, a:hover, a:visited {
 	border-radius: 12px;
 }
 
+#controls .button:hover {
+	background-color: #7795cb;
+}
+
 #controls #play {
 	background-color: #fd0;
 	color: #000;
+}
+
+#controls #play:hover {
+	background-color: #ffec72;
 }
 
 #controls label {
@@ -81,12 +89,12 @@ a, a:hover, a:visited {
 .block .blockcontent {
 	display: none;
 	padding: 10px 20px;
-	background-color: #146c50;
+	background-color: #3f4f6d;
 }
 
 .block .blocktitle {
 	border-top: 1px solid #000;
-	background-color: #0e4734;
+	background-color: #303d54;
 	padding: 10px 20px;
 	cursor: pointer;
 }
@@ -113,12 +121,16 @@ a, a:hover, a:visited {
 	margin: 0 10px 10px 0;
 	padding: 0 20px;
 	line-height: 2em;
-	background-color: #7bb5ff; //#bbeddd;
+	background-color: #88a8e4; //#bbeddd;
 	color: #000;
 	font-weight: bold;
 	-moz-border-radius: 12px;
 	-webkit-border-radius: 12px;
 	border-radius: 12px;
+}
+
+#presets li a:hover {
+	background-color: #b1c8f2;
 }
 
 .log {
@@ -149,9 +161,9 @@ h2 {
 #footer {
 	padding: 10px 20px;
 	font-size: 0.85em;
-	color: #198261;
+	color: #6b86b7;
 }
 
 #footer a {
-	color: #26C493 !important;				
+	color: #88a8e4 !important;				
 }
